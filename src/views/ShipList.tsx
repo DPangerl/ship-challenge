@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { gql, useQuery } from "@apollo/client";
 import { SearchableList } from "@components/SearchableList";
 import { InView } from "react-intersection-observer";
+import { Loader } from "@components/Loader";
 
 const FETCH_SHIPS_GQL = gql`
   query fetch_ships($find: ShipsFind, $limit: Int, $offset: Int) {
@@ -47,7 +48,7 @@ export default function TransactionListView() {
         onClickClearFilterString={handleClickClearSearchString}
         items={data?.ships}
       />
-      <InView onChange={(inView) => inView && handleScrollMore()} />
+      <InView as="div" onChange={(inView) => inView && handleScrollMore()} rootMargin="32px" />
     </>
   );
 }
