@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import shipPlaceholder from "../images/boat_placeholder.png";
 import React from "react";
 
@@ -17,9 +17,18 @@ export function ShipCard({ ship, onClickMore }: ShipCardProps) {
     <Card>
       <CardMedia component="img" height="240" image={ship.image || shipPlaceholder} alt={ship.image} />
       <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
+        <Typography
+          sx={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+          variant="h6"
+          component="div"
+        >
           {ship.name}
         </Typography>
+
         <Typography variant="body2" color="text.secondary">
           {ship.type}
         </Typography>
